@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.so
+.Python
+env/
+.cache
+.bak/
+*~
+.#*
+*#
+*.swp
+*.swo
+data/*.csv
+.idea/
