@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 import unittest, sys
 sys.path.append("..")
-from financialml.ch3.cusumfilter import get_daily_vol, cusum_filter_close
+from financialml.ch2.cusumfilter import get_daily_vol, cusum_filter_close
 from financialml.ch3.triplebarrier import get_events, get_events_w_metalabel, get_t1
 from financialml.ch3.bins import get_bins, get_bins_w_metalabel
 from financialml.ch3.utils import macd_side, get_close
@@ -32,8 +32,8 @@ class TestTripleBarrier(TestBase):
 
     def test_cusum_filter(self):
         volatility = get_daily_vol(self._close, span=30)
-        t_events = cusum_filter_close(self._close, volatility)
-        print("tEvents:\n", t_events[:10])
+        tEvents = cusum_filter_close(self._close, volatility)
+        print("tEvents:\n", tEvents[:10])
         self.assertTrue(True)
 
     def test_get_t1(self):
