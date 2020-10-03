@@ -8,10 +8,12 @@ def get_bins(events, close):
     """
     Construct labels
     :param events: pd.DateTimeIndex when barrier was touched
+        - index: events start time
+        - events['t1']: events end time
     :param close:
     :return: out: pd.DataFrame
-        ret: realized return
-        bin {-1,0,1}
+        out['ret']: realized return
+        out['bin']: sign of return
     """
     # Prices aligned with events
     events = events.dropna(subset=['t1'])
@@ -30,10 +32,16 @@ def get_bins_w_metalabel(events, close):
     """
     Construct labels
     :param events: pd.DateTimeIndex when barrier was touched
+        - index: events start time
+        - events['t1']: events end time
+        - events['trgt]: events target
+        - events['side]: (optional) implies the algo's position side
+        case 1: side not in events: bin is (-1,1) <- label by price action
+        case 2: side in events: bin is (0,1) <- label by pnl (meta-labeling)
     :param close:
     :return: out: pd.DataFrame
-        ret: realized return
-        bin {-1,0,1}
+        out['ret']: realized return
+        out['bin']: (see above)
     """
     # Prices aligned with events
     events = events.dropna(subset=['t1'])

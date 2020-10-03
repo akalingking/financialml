@@ -1,0 +1,8 @@
+numpy
+scipy
+pandas
+fastparquet
+pyarrow
+dask
+tqdm
+sns
